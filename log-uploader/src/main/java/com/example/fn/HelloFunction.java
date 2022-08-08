@@ -10,8 +10,8 @@ import javax.net.ssl.X509TrustManager;
 
 public class HelloFunction {
 
-    public String handleRequest(OciLogging logContent) {
-        System.out.println(logContent.data.message);
+    public String handleRequest(OciLogging log) {
+        System.out.println(log.logContent.data.message);
         return "ok";
     }
 

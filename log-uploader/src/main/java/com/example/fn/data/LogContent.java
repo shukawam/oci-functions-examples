@@ -6,10 +6,16 @@ package com.example.fn.data;
 
 /**
  *
- * @author shukawam
+ * @author opc
  */
-public class OciLogging {
+public class LogContent {
 
-    public long datetime;
-    public LogContent logContent;
+    public Data data;
+    public String id;
+    public Oracle oracle;
+    public String source;
+    public String specversion;
+    public String subject;
+    public String time;
+    public String type;
 }
