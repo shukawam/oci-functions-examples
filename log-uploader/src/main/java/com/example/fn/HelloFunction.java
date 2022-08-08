@@ -1,12 +1,43 @@
 package com.example.fn;
 
+import com.example.fn.data.OciLogging;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 public class HelloFunction {
 
-    public String handleRequest(String input) {
-        String name = (input == null || input.isEmpty()) ? "world" : input;
+    public String handleRequest(OciLogging logContent) {
+        System.out.println(logContent.data.message);
+        return "ok";
+    }
 
-        System.out.println("Inside Java Hello World function");
-        return "Hello, " + name + "!";
+    private SSLContext insecureCtx() {
+        TrustManager[] noopManagers = new TrustManager[]{
+            new X509TrustManager() {
+                public void checkClientTrusted(X509Certificate[] xcs, String string) {
+
+                }
+
+                public void checkServerTrusted(X509Certificate[] xcs, String string) {
+
+                }
+
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+            }
+        };
+        try {
+            SSLContext sc = SSLContext.getInstance("ssl");
+            sc.init(null, noopManagers, null);
+            return sc;
+        } catch (KeyManagementException | NoSuchAlgorithmException e) {
+            return null;
+        }
     }
 
 }
