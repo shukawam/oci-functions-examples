@@ -4,15 +4,18 @@ import com.example.fn.data.OciLogging;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
+import java.util.List;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public class HelloFunction {
 
-    public String handleRequest(OciLogging log) {
-        System.out.println(log.logContent.data.message);
-        return log.logContent.data.message;
+    public String handleRequest(List<OciLogging> logs) {
+        logs.forEach(log -> {
+            System.out.println(log.logContent.data.message);
+        });
+        return "ok";
     }
 
     private SSLContext insecureCtx() {
