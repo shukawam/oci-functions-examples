@@ -12,7 +12,7 @@ public class HelloFunction {
 
     public String handleRequest(OciLogging log) {
         System.out.println(log.logContent.data.message);
-        return "ok";
+        return log.logContent.data.message;
     }
 
     private SSLContext insecureCtx() {
