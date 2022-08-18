@@ -1,0 +1,10 @@
+schema_version: 20180708
+name: accounts
+version: 0.0.1
+runtime: java
+build_image: fnproject/fn-java-fdk-build:jdk17-1.0.150
+run_image: fnproject/fn-java-fdk:jre17-1.0.150
+cmd: com.example.fn.HelloFunction::handleRequest
+config:
+  OPENSEARCH_API_ENDPOINT: https://amaaaaaassl65iqaesae2kdzsilyfoqxdr4mmll7pbc33bzjch5ff6scat3a.opensearch.us-phoenix-1.oci.oracleiaas.com:9200
+  INDEX: bank
