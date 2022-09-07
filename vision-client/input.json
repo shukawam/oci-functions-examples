@@ -1,0 +1,26 @@
+{
+    "eventType": "com.oraclecloud.objectstorage.deleteobject",
+    "cloudEventsVersion": "0.1",
+    "eventTypeVersion": "2.0",
+    "source": "ObjectStorage",
+    "eventTime": "2022-08-29T09:07:40Z",
+    "contentType": "application/json",
+    "data": {
+        "compartmentId": "ocid1.compartment.oc1..aaaaaaaanjtbllhqxcg67dq7em3vto2mvsbc6pbgk4pw6cx37afzk3tngmoa",
+        "compartmentName": "shuhei.kawamura",
+        "resourceName": "cat.jpg",
+        "resourceId": "/n/orasejapan/b/vision-bucket/o/cat.jpg",
+        "availabilityDomain": "NRT-AD-1",
+        "additionalDetails": {
+            "bucketName": "vision-bucket",
+            "archivalState": null,
+            "namespace": "orasejapan",
+            "bucketId": "ocid1.bucket.oc1.ap-tokyo-1.aaaaaaaammn7y6end6uxdfetv7fjk3z34h5hypac6r2btuum7nw6rm5sbmlq",
+            "eTag": null
+        }
+    },
+    "eventID": "b88780ca-4337-fb9d-2b10-600dd2b539e3",
+    "extensions": {
+        "compartmentId": "ocid1.compartment.oc1..aaaaaaaanjtbllhqxcg67dq7em3vto2mvsbc6pbgk4pw6cx37afzk3tngmoa"
+    }
+}
