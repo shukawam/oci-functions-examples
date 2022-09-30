@@ -39,9 +39,9 @@ public class HelloFunction {
             {
                 \"size\": 25,
                 \"query\": {
-                    \"simple_query_string\": {
+                    \"multi_match\": {
                         \"query\": "%s",
-                        \"fields\": [\"firstname\", \"lastname\"]
+                        \"fields\": [\"firstname\", \"lastname\", \"address\", \"employer\", \"email\", \"city\"]
                     }
                 }
             }""".formatted(value);
