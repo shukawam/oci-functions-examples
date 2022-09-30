@@ -9,7 +9,8 @@ public class ApmFunction1 {
 
     public String handleRequest(HTTPGatewayContext ctx) {
         loggingHttpGatewayContext(ctx);
-        return "ok";
+        SleepService sleepService = new SleepService();
+        return sleepService.greeting();
     }
 
     private void loggingHttpGatewayContext(HTTPGatewayContext ctx) {
