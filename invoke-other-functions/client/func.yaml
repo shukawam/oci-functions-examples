@@ -5,3 +5,5 @@ runtime: java
 build_image: fnproject/fn-java-fdk-build:jdk17-1.0.151
 run_image: fnproject/fn-java-fdk:jre17-1.0.151
 cmd: com.example.fn.HelloFunction::handleRequest
+config:
+  FUNCTIONS_OCID: ocid1.fnfunc.oc1.ap-tokyo-1.aaaaaaaaqnillqadufbtjxcplq564t4lxvdmhbwkb5rnjus7pyirhytsntcq
