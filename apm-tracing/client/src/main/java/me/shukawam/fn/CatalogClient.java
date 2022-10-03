@@ -14,15 +14,15 @@ import java.io.UnsupportedEncodingException;
  * @author shukawam
  */
 public class CatalogClient {
-    private final FunctionsInvokeClient functionsInvokeClient;
     private static final String CATALOG_FUNCTION_OCID = "ocid1.fnfunc.oc1.ap-tokyo-1.aaaaaaaaj5dpckbpgmh2j77le6h5fk6ommorecvmvajgci2vmhtnddvtozfa";
 
     public CatalogClient() {
-        InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();
-        this.functionsInvokeClient = FunctionsInvokeClient.builder().build(provider);
+
     }
 
     public Object invokeCatalogFunction() {
+        InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();
+        FunctionsInvokeClient functionsInvokeClient = FunctionsInvokeClient.builder().build(provider);
         InvokeFunctionRequest request = InvokeFunctionRequest
                 .builder()
                 .functionId(CATALOG_FUNCTION_OCID)
