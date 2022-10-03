@@ -16,10 +16,6 @@ import java.io.UnsupportedEncodingException;
 public class CatalogClient {
     private static final String CATALOG_FUNCTION_OCID = "ocid1.fnfunc.oc1.ap-tokyo-1.aaaaaaaaj5dpckbpgmh2j77le6h5fk6ommorecvmvajgci2vmhtnddvtozfa";
 
-    public CatalogClient() {
-
-    }
-
     public Object invokeCatalogFunction() {
         InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider.builder().build();
         FunctionsInvokeClient functionsInvokeClient = FunctionsInvokeClient.builder().build(provider);

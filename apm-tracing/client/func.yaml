@@ -6,7 +6,7 @@ build_image: fnproject/fn-java-fdk-build:jdk17-1.0.151
 run_image: fnproject/fn-java-fdk:jre17-1.0.151
 cmd: me.shukawam.fn.EntryPoint::handleRequest
 signing_details:
-    image_compartment_id: ocid1.tenancy.oc1..aaaaaaaa3mb7wrcy2ls3u3jsy2soq5ck3lc3q4mczitpdaymbuazc5tkguca
-    kms_key_id: ocid1.key.oc1.ap-tokyo-1.cjqxrot6aahqq.abxhiljrxcpvony3dy4edb5vzypfzhcde6rryyo65dgro4op5tgbtjhcagnq
-    kms_key_version_id: ocid1.keyversion.oc1.ap-tokyo-1.cjqxrot6aahqq.csivmg42i3iaa.abxhiljrok6vgoh7hpitdrbef22rtwfzzqgt6n6z3zunjtre5zxkyjisdn4q
-    signing_algorithm: SHA_256_RSA_PKCS_PSS
+  image_compartment_id: ocid1.tenancy.oc1..aaaaaaaa3mb7wrcy2ls3u3jsy2soq5ck3lc3q4mczitpdaymbuazc5tkguca
+  kms_key_id: ocid1.key.oc1.ap-tokyo-1.cjqxrot6aahqq.abxhiljrxcpvony3dy4edb5vzypfzhcde6rryyo65dgro4op5tgbtjhcagnq
+  kms_key_version_id: ocid1.keyversion.oc1.ap-tokyo-1.cjqxrot6aahqq.csivmg42i3iaa.abxhiljrok6vgoh7hpitdrbef22rtwfzzqgt6n6z3zunjtre5zxkyjisdn4q
+  signing_algorithm: SHA_256_RSA_PKCS_PSS
