@@ -5,7 +5,8 @@ package me.shukawam.fn;
  */
 public class EntryPoint {
 
-    public String handleRequest() {
-        return "";
+    public Object handleRequest() {
+        CatalogClient client = new CatalogClient();
+        return client.invokeCatalogFunction();
     }
 }
