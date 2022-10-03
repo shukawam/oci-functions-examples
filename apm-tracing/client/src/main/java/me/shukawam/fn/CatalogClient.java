@@ -26,6 +26,7 @@ public class CatalogClient {
         InvokeFunctionRequest request = InvokeFunctionRequest
                 .builder()
                 .functionId(CATALOG_FUNCTION_OCID)
+                .fnIntent(InvokeFunctionRequest.FnIntent.Httprequest)
                 .fnInvokeType(InvokeFunctionRequest.FnInvokeType.Sync)
                 .build();
         InvokeFunctionResponse response = functionsInvokeClient.invokeFunction(request);
