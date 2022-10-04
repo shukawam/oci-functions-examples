@@ -3,6 +3,7 @@ package com.example.fn;
 import com.fnproject.fn.api.InvocationContext;
 import com.fnproject.fn.api.httpgateway.HTTPGatewayContext;
 import com.oracle.bmc.auth.InstancePrincipalsAuthenticationDetailsProvider;
+import com.oracle.bmc.auth.ResourcePrincipalAuthenticationDetailsProvider;
 import com.oracle.bmc.functions.FunctionsInvokeClient;
 import com.oracle.bmc.functions.requests.InvokeFunctionRequest;
 import com.oracle.bmc.functions.responses.InvokeFunctionResponse;
@@ -25,6 +26,7 @@ public class HelloFunction {
         InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider
                 .builder()
                 .build();
+//        ResourcePrincipalAuthenticationDetailsProvider provider = ResourcePrincipalAuthenticationDetailsProvider.builder().build();
         FunctionsInvokeClient invokeClient = FunctionsInvokeClient
                 .builder()
                 .endpoint(endpoint)
