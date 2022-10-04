@@ -26,26 +26,21 @@ public class ClientFunction {
     }
 
     private void tracingHeaderPropagation(HTTPGatewayContext ctx) {
-        if (ctx.getHeaders().get("X-B3-TraceId").isPresent()) {
-            var xB3TraceId = ctx.getHeaders().get("X-B3-TraceId").get();
-            ctx.setResponseHeader("X-B3-TraceId", xB3TraceId);
+        if(ctx.getInvocationContext().getRequestHeaders().get("X-B3-Traceid").isPresent()) {
+            var xB3TraceId = ctx.getInvocationContext().getRequestHeaders().get("X-B3-Traceid").get();
+            ctx.setResponseHeader("X-B3-Traceid", xB3TraceId);
         }
-        if (ctx.getHeaders().get("X-B3-SpanId").isPresent()) {
-            var xB3SpanId = ctx.getHeaders().get("X-B3-SpanId").get();
-            ctx.setResponseHeader("X-B3-SpanId", xB3SpanId);
+        if(ctx.getInvocationContext().getRequestHeaders().get("X-B3-SpanId").isPresent()) {
+            var xB3TraceId = ctx.getInvocationContext().getRequestHeaders().get("X-B3-SpanId").get();
+            ctx.setResponseHeader("X-B3-SpanId", xB3TraceId);
         }
-        if (ctx.getHeaders().get("X-B3-ParentSpanId").isPresent()) {
-            var xB3ParentSpanId = ctx.getHeaders().get("X-B3-ParentSpanId").get();
-            ctx.setResponseHeader("X-B3-ParentSpanId", xB3ParentSpanId);
+        if(ctx.getInvocationContext().getRequestHeaders().get("X-B3-ParentSpanId").isPresent()) {
+            var xB3TraceId = ctx.getInvocationContext().getRequestHeaders().get("X-B3-ParentSpanId").get();
+            ctx.setResponseHeader("X-B3-ParentSpanId", xB3TraceId);
         }
-
     }
 
     private void loggingHeaders(HTTPGatewayContext ctx) {
-//        LOGGER.info("*** HTTP Headers ***");
-//        ctx.getHeaders().asMap().forEach((k,v) -> {
-//            LOGGER.info(String.format("%s: %s", k, v));
-//        });
         LOGGER.info("*** HTTP Request Headers ***");
         ctx.getInvocationContext().getRequestHeaders().asMap().forEach((k, v) -> LOGGER.info(String.format("%s: %s", k, v)));
     }
