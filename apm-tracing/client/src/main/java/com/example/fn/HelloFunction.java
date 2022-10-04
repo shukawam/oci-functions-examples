@@ -1,5 +1,8 @@
 package com.example.fn;
 
+import com.fnproject.fn.api.Headers;
+import com.fnproject.fn.api.httpgateway.HTTPGatewayContext;
+import com.oracle.bmc.ClientConfiguration;
 import com.oracle.bmc.auth.ResourcePrincipalAuthenticationDetailsProvider;
 import com.oracle.bmc.functions.FunctionsInvokeClient;
 import com.oracle.bmc.functions.requests.InvokeFunctionRequest;
@@ -12,14 +15,38 @@ import java.util.logging.Logger;
 public class HelloFunction {
     private static final Logger LOGGER = Logger.getLogger(HelloFunction.class.getName());
 
-    public String handleRequest(Request request) {
+    public String handleRequest(Request request, HTTPGatewayContext ctx) {
         var endpoint = request.functionEndpoint;
         LOGGER.info(String.format("FUNCTIONS_ENDPOINT: %s", endpoint));
         var fnOcid = request.functionOcid;
         LOGGER.info(String.format("FUNCTIONS_OCID: %s", fnOcid));
         var name = request.name;
         LOGGER.info(String.format("NAME: %s", name));
+        loggingHeaders(ctx);
+        tracingHeaderPropagation(ctx);
         return invokeOtherFunctions(endpoint, fnOcid, name);
+    }
+
+    private void tracingHeaderPropagation(HTTPGatewayContext ctx) {
+        if (ctx.getHeaders().get("X-B3-TraceId").isPresent()) {
+            var xB3TraceId = ctx.getHeaders().get("X-B3-TraceId").get();
+            ctx.setResponseHeader("X-B3-TraceId", xB3TraceId);
+        }
+        if (ctx.getHeaders().get("X-B3-SpanId").isPresent()) {
+            var xB3SpanId = ctx.getHeaders().get("X-B3-SpanId").get();
+            ctx.setResponseHeader("X-B3-SpanId", xB3SpanId);
+        }
+        if (ctx.getHeaders().get("X-B3-ParentSpanId").isPresent()) {
+            var xB3ParentSpanId = ctx.getHeaders().get("X-B3-ParentSpanId").get();
+            ctx.setResponseHeader("X-B3-ParentSpanId", xB3ParentSpanId);
+        }
+
+    }
+
+    private void loggingHeaders(HTTPGatewayContext ctx) {
+        ctx.getHeaders().asMap().forEach((k,v) -> {
+            LOGGER.info(String.format("%s: %s", k, v));
+        });
     }
 
     private String invokeOtherFunctions(String endpoint, String fnOcid, String name) {
@@ -34,7 +61,7 @@ public class HelloFunction {
         InvokeFunctionRequest request = InvokeFunctionRequest
                 .builder()
                 .functionId(fnOcid)
-                .body$(inputStream)
+                .invokeFunctionBody(inputStream)
                 .build();
         InvokeFunctionResponse response = invokeClient.invokeFunction(request);
         BufferedReader br = new BufferedReader(new InputStreamReader(response.getInputStream()));
@@ -49,5 +76,7 @@ public class HelloFunction {
             throw new RuntimeException();
         }
     }
+
+
 
 }
