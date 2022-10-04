@@ -26,6 +26,7 @@ public class HelloFunction {
     }
 
     private String invokeOtherFunctions(String endpoint, String fnOcid, String name) {
+        LOGGER.info(String.format("START TIME: %s", System.currentTimeMillis()));
         // InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider
         //         .builder()
         //         .build();
@@ -40,8 +41,6 @@ public class HelloFunction {
         InvokeFunctionRequest request = InvokeFunctionRequest
                 .builder()
                 .functionId(fnOcid)
-                .fnInvokeType(InvokeFunctionRequest.FnInvokeType.Sync)
-                .fnIntent(InvokeFunctionRequest.FnIntent.Httprequest)
                 .body$(inputStream)
                 .build();
         InvokeFunctionResponse response = invokeClient.invokeFunction(request);
@@ -52,6 +51,8 @@ public class HelloFunction {
             while ((functionsResponse = br.readLine()) != null) {
                 sb.append(functionsResponse);
             }
+            LOGGER.info(String.format("RESPONSE: %s", sb));
+            LOGGER.info(String.format("END TIME: %s", System.currentTimeMillis()));
             return sb.toString();
         } catch (IOException e) {
             throw new RuntimeException();
