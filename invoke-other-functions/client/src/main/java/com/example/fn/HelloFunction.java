@@ -1,8 +1,5 @@
 package com.example.fn;
 
-import com.fnproject.fn.api.InvocationContext;
-import com.fnproject.fn.api.httpgateway.HTTPGatewayContext;
-import com.oracle.bmc.auth.InstancePrincipalsAuthenticationDetailsProvider;
 import com.oracle.bmc.auth.ResourcePrincipalAuthenticationDetailsProvider;
 import com.oracle.bmc.functions.FunctionsInvokeClient;
 import com.oracle.bmc.functions.requests.InvokeFunctionRequest;
@@ -15,21 +12,17 @@ import java.util.logging.Logger;
 public class HelloFunction {
     private static final Logger LOGGER = Logger.getLogger(HelloFunction.class.getName());
 
-    public String handleRequest(HTTPGatewayContext ctx) {
-        var endpoint = ctx.getInvocationContext().getRuntimeContext().getConfiguration().get("FUNCTIONS_ENDPOINT");
+    public String handleRequest(Request request) {
+        var endpoint = request.functionOcid;
         LOGGER.info(String.format("FUNCTIONS_ENDPOINT: %s", endpoint));
-        var fnOcid = ctx.getInvocationContext().getRuntimeContext().getConfiguration().get("FUNCTIONS_OCID");
+        var fnOcid = request.functionEndpoint;
         LOGGER.info(String.format("FUNCTIONS_OCID: %s", fnOcid));
-        var name = ctx.getQueryParameters().get("name").orElse("Joe");
+        var name = request.name;
         LOGGER.info(String.format("NAME: %s", name));
         return invokeOtherFunctions(endpoint, fnOcid, name);
     }
 
     private String invokeOtherFunctions(String endpoint, String fnOcid, String name) {
-        LOGGER.info(String.format("START TIME: %s", System.currentTimeMillis()));
-        // InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider
-        //         .builder()
-        //         .build();
        ResourcePrincipalAuthenticationDetailsProvider provider = ResourcePrincipalAuthenticationDetailsProvider
                 .builder()
                 .build();
@@ -51,8 +44,6 @@ public class HelloFunction {
             while ((functionsResponse = br.readLine()) != null) {
                 sb.append(functionsResponse);
             }
-            LOGGER.info(String.format("RESPONSE: %s", sb));
-            LOGGER.info(String.format("END TIME: %s", System.currentTimeMillis()));
             return sb.toString();
         } catch (IOException e) {
             throw new RuntimeException();

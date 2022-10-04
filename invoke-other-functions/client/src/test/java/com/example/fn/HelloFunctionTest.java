@@ -12,11 +12,14 @@ public class HelloFunctionTest {
 
     // @Test
     public void shouldReturnGreeting() {
-        testing.givenEvent().enqueue();
+        testing
+                .givenEvent()
+                .withBody("shukawam")
+                .enqueue();
         testing.thenRun(HelloFunction.class, "handleRequest");
 
         FnResult result = testing.getOnlyResult();
-        assertEquals("Hello, world!", result.getBodyAsString());
+        assertEquals("Hello, shukawam!", result.getBodyAsString());
     }
 
 }
