@@ -17,16 +17,21 @@ public class HelloFunction {
 
     public String handleRequest(HTTPGatewayContext ctx) {
         var endpoint = ctx.getInvocationContext().getRuntimeContext().getConfiguration().get("FUNCTIONS_ENDPOINT");
+        LOGGER.info(String.format("FUNCTIONS_ENDPOINT: %s", endpoint));
         var fnOcid = ctx.getInvocationContext().getRuntimeContext().getConfiguration().get("FUNCTIONS_OCID");
+        LOGGER.info(String.format("FUNCTIONS_OCID: %s", fnOcid));
         var name = ctx.getQueryParameters().get("name").orElse("Joe");
+        LOGGER.info(String.format("NAME: %s", name));
         return invokeOtherFunctions(endpoint, fnOcid, name);
     }
 
     private String invokeOtherFunctions(String endpoint, String fnOcid, String name) {
-        InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider
+        // InstancePrincipalsAuthenticationDetailsProvider provider = InstancePrincipalsAuthenticationDetailsProvider
+        //         .builder()
+        //         .build();
+       ResourcePrincipalAuthenticationDetailsProvider provider = ResourcePrincipalAuthenticationDetailsProvider
                 .builder()
                 .build();
-//        ResourcePrincipalAuthenticationDetailsProvider provider = ResourcePrincipalAuthenticationDetailsProvider.builder().build();
         FunctionsInvokeClient invokeClient = FunctionsInvokeClient
                 .builder()
                 .endpoint(endpoint)
