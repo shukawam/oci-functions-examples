@@ -13,9 +13,9 @@ public class HelloFunction {
     private static final Logger LOGGER = Logger.getLogger(HelloFunction.class.getName());
 
     public String handleRequest(Request request) {
-        var endpoint = request.functionOcid;
+        var endpoint = request.functionEndpoint;
         LOGGER.info(String.format("FUNCTIONS_ENDPOINT: %s", endpoint));
-        var fnOcid = request.functionEndpoint;
+        var fnOcid = request.functionOcid;
         LOGGER.info(String.format("FUNCTIONS_OCID: %s", fnOcid));
         var name = request.name;
         LOGGER.info(String.format("NAME: %s", name));
