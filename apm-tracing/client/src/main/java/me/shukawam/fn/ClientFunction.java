@@ -1,8 +1,6 @@
-package com.example.fn;
+package me.shukawam.fn;
 
-import com.fnproject.fn.api.Headers;
 import com.fnproject.fn.api.httpgateway.HTTPGatewayContext;
-import com.oracle.bmc.ClientConfiguration;
 import com.oracle.bmc.auth.ResourcePrincipalAuthenticationDetailsProvider;
 import com.oracle.bmc.functions.FunctionsInvokeClient;
 import com.oracle.bmc.functions.requests.InvokeFunctionRequest;
@@ -12,8 +10,8 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-public class HelloFunction {
-    private static final Logger LOGGER = Logger.getLogger(HelloFunction.class.getName());
+public class ClientFunction {
+    private static final Logger LOGGER = Logger.getLogger(ClientFunction.class.getName());
 
     public String handleRequest(Request request, HTTPGatewayContext ctx) {
         var endpoint = request.functionEndpoint;

@@ -1,4 +1,4 @@
-package com.example.fn;
+package me.shukawam.fn;
 
 /**
  * @author shukawam

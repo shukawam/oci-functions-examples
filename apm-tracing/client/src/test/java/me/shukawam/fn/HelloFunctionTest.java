@@ -1,4 +1,4 @@
-package com.example.fn;
+package me.shukawam.fn;
 
 import com.fnproject.fn.testing.*;
 import org.junit.*;
@@ -16,7 +16,7 @@ public class HelloFunctionTest {
                 .givenEvent()
                 .withBody("shukawam")
                 .enqueue();
-        testing.thenRun(HelloFunction.class, "handleRequest");
+        testing.thenRun(ClientFunction.class, "handleRequest");
 
         FnResult result = testing.getOnlyResult();
         assertEquals("Hello, shukawam!", result.getBodyAsString());

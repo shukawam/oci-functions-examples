@@ -1,11 +1,11 @@
-package com.example.fn;
+package me.shukawam.fn;
 
 import com.fnproject.fn.api.httpgateway.HTTPGatewayContext;
 
 import java.util.logging.Logger;
 
-public class HelloFunction {
-    private static final Logger LOGGER = Logger.getLogger(HelloFunction.class.getName());
+public class GreetingFunction {
+    private static final Logger LOGGER = Logger.getLogger(GreetingFunction.class.getName());
 
     public String handleRequest(String input, HTTPGatewayContext ctx) {
         String name = (input == null || input.isEmpty()) ? "world" : input;
