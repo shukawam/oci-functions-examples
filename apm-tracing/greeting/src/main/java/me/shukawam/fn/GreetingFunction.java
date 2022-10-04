@@ -16,9 +16,8 @@ public class GreetingFunction {
     }
 
     private void loggingHeaders(HTTPGatewayContext ctx) {
-        ctx.getHeaders().asMap().forEach((k, v) -> {
-            LOGGER.info(String.format("%s: %s", k, v));
-        });
+        LOGGER.info("*** HTTP Request Headers ***");
+        ctx.getInvocationContext().getRequestHeaders().asMap().forEach((k, v) -> LOGGER.info(String.format("%s: %s", k, v)));
     }
 
 }
