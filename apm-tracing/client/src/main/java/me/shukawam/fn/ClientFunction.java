@@ -42,9 +42,12 @@ public class ClientFunction {
     }
 
     private void loggingHeaders(HTTPGatewayContext ctx) {
-        ctx.getHeaders().asMap().forEach((k,v) -> {
-            LOGGER.info(String.format("%s: %s", k, v));
-        });
+//        LOGGER.info("*** HTTP Headers ***");
+//        ctx.getHeaders().asMap().forEach((k,v) -> {
+//            LOGGER.info(String.format("%s: %s", k, v));
+//        });
+        LOGGER.info("*** HTTP Request Headers ***");
+        ctx.getInvocationContext().getRequestHeaders().asMap().forEach((k, v) -> LOGGER.info(String.format("%s: %s", k, v)));
     }
 
     private String invokeOtherFunctions(String endpoint, String fnOcid, String name) {
