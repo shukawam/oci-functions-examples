@@ -1,4 +1,4 @@
-package me.shukawam.fn;
+package me.shukawam.fn.fn;
 
 /**
  * @author shukawam

@@ -1,4 +1,4 @@
-package me.shukawam.com;
+package me.shukawam.fn;
 
 import java.util.logging.Logger;
 import brave.Span;
