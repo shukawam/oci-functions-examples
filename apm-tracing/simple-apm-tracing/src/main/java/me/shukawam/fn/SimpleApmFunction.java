@@ -25,7 +25,7 @@ public class SimpleApmFunction {
     private String apmUrl;
     private TraceContext traceContext;
 
-    public String handleRequest(TracingContext tracingContext) {
+    public String handleRequest(String input, TracingContext tracingContext) {
         initializeZipkin(tracingContext);
         // Start a new trace or a span within an existing trace representing an operation
         Span span = tracer.newChild(traceContext).name("MainHandle").start();

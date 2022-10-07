@@ -78,6 +78,7 @@ public class SimpleApmTracingClientFunction {
         InvokeFunctionRequest invokeFunctionRequest = InvokeFunctionRequest
                 .builder()
                 .functionId(request.functionOcid)
+                .invokeFunctionBody(null)
                 .build();
         InvokeFunctionResponse invokeFunctionResponse = client.invokeFunction(invokeFunctionRequest);
         BufferedReader br = new BufferedReader(new InputStreamReader(invokeFunctionResponse.getInputStream()));
@@ -87,9 +88,9 @@ public class SimpleApmTracingClientFunction {
             while ((functionResponse = br.readLine()) != null) {
                 sb.append(functionResponse);
             }
+            return sb.toString();
         } catch (IOException e) {
             throw new RuntimeException();
         }
-        return sb.toString();
     }
 }
