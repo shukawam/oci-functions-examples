@@ -15,9 +15,8 @@ import zipkin2.reporter.Sender;
 import zipkin2.reporter.brave.AsyncZipkinSpanHandler;
 import zipkin2.reporter.urlconnection.URLConnectionSender;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
 /**
@@ -75,10 +74,11 @@ public class SimpleApmTracingClientFunction {
                 .builder()
                 .endpoint(request.functionEndpoint)
                 .build(provider);
+        InputStream inputStream = new ByteArrayInputStream(request.name.getBytes(StandardCharsets.UTF_8));
         InvokeFunctionRequest invokeFunctionRequest = InvokeFunctionRequest
                 .builder()
                 .functionId(request.functionOcid)
-                .invokeFunctionBody(null)
+                .invokeFunctionBody(inputStream)
                 .build();
         InvokeFunctionResponse invokeFunctionResponse = client.invokeFunction(invokeFunctionRequest);
         BufferedReader br = new BufferedReader(new InputStreamReader(invokeFunctionResponse.getInputStream()));
