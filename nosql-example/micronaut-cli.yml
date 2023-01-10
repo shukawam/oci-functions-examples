@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: me.shukawam.fn
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, gradle, jackson-databind, java, java-application, junit, micronaut-build, oracle-cloud-sdk, oracle-function, oracle-function-http, readme, shade, slf4j-simple, yaml]
