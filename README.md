@@ -1,3 +1,3 @@
 # oracle-functions-examples
 
-Oracle Functions(Fn Project) sample codes.
+Oracle Functions sample codes.
