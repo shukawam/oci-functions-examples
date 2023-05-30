@@ -20,7 +20,7 @@ dependencies {
     testImplementation("io.micronaut:micronaut-http-client")
 
     // https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-common-httpclient
-    implementation 'com.oracle.oci.sdk:oci-java-sdk-common-httpclient-jersey:3.2.0'
+    implementation 'com.oracle.oci.sdk:oci-java-sdk-common-httpclient-jersey:3.15.0'
     // https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-common
     implementation ("com.oracle.oci.sdk:oci-java-sdk-common:3.15.0")
     // https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-nosql
