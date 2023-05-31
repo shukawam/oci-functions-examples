@@ -12,7 +12,7 @@ import com.fnproject.fn.api.OutputEvent.Status;
 
 /**
  * This Function converts JSON to CSV format.
- * 
+ *
  * @author shukawam
  */
 public class EntryPoint {
@@ -28,8 +28,8 @@ public class EntryPoint {
             var decodedInputs = inputs.stream().map(i -> new Input(i.getStream(), i.getPartition(),
                     base64Decode(i.getKey()), base64Decode(i.getValue()), i.getOffset(), i.getTimestamp())).toList();
             var csvOutput = csvMapper.writer(csvSchema).writeValueAsString(decodedInputs);
-            var outputEvent = OutputEvent.fromBytes(
-                    csvOutput.getBytes(), Status.Success, "text/csv", Headers.emptyHeaders());
+            var outputEvent = OutputEvent.fromBytes(csvOutput.getBytes(), Status.Success, "text/csv",
+                    Headers.emptyHeaders());
             return outputEvent;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
