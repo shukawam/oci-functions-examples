@@ -7,7 +7,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <fdk.version>1.0.174</fdk.version>
         <jackson.version>2.15.1</jackson.version>
-        <maven.formatter.plugin.version>2.22.0</maven.formatter.plugin.version>
+        <maven.formatter.plugin.version>2.23.0</maven.formatter.plugin.version>
     </properties>
     <groupId>me.shukawam</groupId>
     <artifactId>oci-sch-streaming-json-to-csv</artifactId>
