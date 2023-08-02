@@ -24,7 +24,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-common
     implementation ("com.oracle.oci.sdk:oci-java-sdk-common:3.16.0")
     // https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-nosql
-    implementation ("com.oracle.oci.sdk:oci-java-sdk-nosql:3.16.0")
+    implementation ("com.oracle.oci.sdk:oci-java-sdk-nosql:3.22.0")
 }
 
 
