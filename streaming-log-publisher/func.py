@@ -36,9 +36,10 @@ def publish_message(log_content, stream_id, message_endpoint):
 
 def create_messages_details(log_content):
     message_list = []
-    key = b64encode("key".encode()).decode()
+    # key = b64encode("key".encode()).decode()
     value = b64encode(json.dumps(log_content).encode()).decode()
-    message_entry = oci.streaming.models.PutMessagesDetailsEntry(
-        key=key, value=value)
+    # message_entry = oci.streaming.models.PutMessagesDetailsEntry(
+    #     key=key, value=value)
+    message_entry = oci.streaming.models.PutMessagesDetailsEntry(key=None ,value=value)
     message_list.append(message_entry)
     return oci.streaming.models.PutMessagesDetails(messages=message_list)
