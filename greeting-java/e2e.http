@@ -1,0 +1,11 @@
+@endpoint = https://glzylhyxcywjmxvjccbshvidwa.apigateway.ap-tokyo-1.oci.customer-oci.com/v1
+
+GET {{endpoint}}/greet HTTP/1.1
+# Authorization: Basic ZGVmYXVsdDpkZWZhdWx0
+
+###
+POST {{endpoint}}/greet HTTP/1.1
+Content-Type: application/json
+Authorization: Basic ZGVmYXVsdDpkZWZhdWx0
+
+John
