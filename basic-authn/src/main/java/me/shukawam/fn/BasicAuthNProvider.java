@@ -28,11 +28,18 @@ public class BasicAuthNProvider {
     }
 
     public boolean basicAuthNWithNoSQL(String token, String compartmentId, String tableId) {
-        var nosqlClient = NosqlClient.builder().region(Region.AP_TOKYO_1).build(ResourcePrincipalAuthenticationDetailsProvider.builder().build());
+        var nosqlClient =
+        NosqlClient.builder().region(Region.AP_TOKYO_1).build(ResourcePrincipalAuthenticationDetailsProvider.builder().build());
+        // var nosqlClient = NosqlClient.builder().region(Region.AP_TOKYO_1)
+        //         .build(InstancePrincipalsAuthenticationDetailsProvider.builder().build());
         var username = new String(Base64.getDecoder().decode(token)).split(":")[0];
         logger.info(username);
         var response = nosqlClient.getRow(
-                GetRowRequest.builder().compartmentId(compartmentId).key(String.format("username:%s", username)).tableNameOrId(tableId).build());
+                GetRowRequest.builder().compartmentId(compartmentId).key(String.format("username:%s", username))
+                        .tableNameOrId(tableId).build());
+        if (response.getRow().getValue() == null) {
+            return false;
+        }
         var expectedCredential = new String(Base64.getEncoder()
                 .encode(new String(String.format("%s:%s", response.getRow().getValue().get("username"),
                         response.getRow().getValue().get("password"))).getBytes()));
