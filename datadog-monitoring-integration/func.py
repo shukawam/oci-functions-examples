@@ -195,12 +195,13 @@ def get_metric_tags(log_record: dict):
 
     for tag in get_metric_tag_set():
         value = get_dictionary_value(dictionary=log_record, target_key=tag)
+        logging.getLogger().debug("value: {}".format(value))
         if value is None:
             continue
 
         if isinstance(value, str) and ':' in value:
-            logging.getLogger().warning('tag contains a \':\' / ignoring {} ({})'.format(key, value))
-            continue
+            logging.getLogger().warning('tag contains a \':\' / ignoring {}'.format(value))
+            value = value.replace(':', '_')
 
         tag = '{}:{}'.format(tag, value)
         result.append(tag)
@@ -315,4 +316,5 @@ Local Debugging
 """
 
 if __name__ == "__main__":
-    local_test_mode('oci-metrics-test-file.json')
+    filename = os.getenv('FILENAME', 'oci-metrics-test-file.json')
+    local_test_mode(filename)
