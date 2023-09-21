@@ -16,8 +16,13 @@ run_image: fnproject/python:3.9
 entrypoint: /python/bin/fdk /function/func.py handler
 memory: 256
 config:
-  DATADOG_METRICS_API_ENDPOINT: <your-datadog-metrics-api-endpoint> # here
-  DATADOG_API_KEY: <your-datadog-api-key> # here
+  DATADOG_METRICS_API_ENDPOINT: <your-datadog-metrics-api-endpoint>
+  DATADOG_API_KEY: <your-datadog-api-key>
+  # Optional - default value
+  FORWARD_TO_DATADOG: True
+  METRICS_TAG_KEYS: name, namespace, displayName, resourceDisplayName, unit
+  LOGGING_LEVEL: DEBUG
+  ENABLE_TRACING: False
 ```
 
 deploy function

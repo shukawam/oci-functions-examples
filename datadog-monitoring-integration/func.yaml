@@ -9,3 +9,8 @@ memory: 256
 config:
   DATADOG_METRICS_API_ENDPOINT: <your-datadog-metrics-api-endpoint>
   DATADOG_API_KEY: <your-datadog-api-key>
+  # Optional - default value
+  FORWARD_TO_DATADOG: True
+  METRICS_TAG_KEYS: name, namespace, displayName, resourceDisplayName, unit
+  LOGGING_LEVEL: DEBUG
+  ENABLE_TRACING: False
