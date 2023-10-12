@@ -1,0 +1,33 @@
+version: 0.1
+component: build
+timeoutInSeconds: 10000
+shell: bash
+failImmediatelyOnError: true
+env:
+  variables:
+    function_name: greeting-java
+    function_version: 0.0.1
+  exportedVariables:
+    - tag
+
+steps:
+  - type: Command
+    name: "build function image"
+    shell: bash
+    timeoutInSeconds: 650
+    failImmediatelyOnError: true
+    command: |
+      cd greeting-java
+      fn build
+      docker tag ${function_name}:${function_version} ${function_name}
+      tag=${function_version}
+    onFailure:
+      - type: Command
+        command: |
+          echo "Failure successfully handled"
+        timeoutInSeconds: 400
+
+outputArtifacts:
+  - name: greeting-java-image
+    type: DOCKER_IMAGE
+    location: greeting-java
