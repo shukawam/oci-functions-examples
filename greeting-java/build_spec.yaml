@@ -13,7 +13,7 @@ env:
 steps:
   - type: Command
     name: "build function image"
-    shell: shellType
+    shell: bash
     timeoutInSeconds: 650
     failImmediatelyOnError: true
     command: |
