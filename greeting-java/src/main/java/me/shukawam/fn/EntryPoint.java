@@ -4,6 +4,6 @@ import me.shukawam.fn.data.Response;
 
 public class EntryPoint {
     public Response handleRequest(String name) {
-        return new Response("Hi there2.");
+        return new Response("Hi there1.");
     }
 }

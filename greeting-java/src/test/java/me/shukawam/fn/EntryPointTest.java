@@ -18,7 +18,7 @@ public class EntryPointTest {
         testing.thenRun(EntryPoint.class, "handleRequest");
 
         FnResult result = testing.getOnlyResult();
-        assertEquals("{\"message\":\"Hi there2.\"}", result.getBodyAsString());
+        assertEquals("{\"message\":\"Hi there1.\"}", result.getBodyAsString());
     }
 
     // @Test
