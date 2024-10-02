@@ -1,9 +1,11 @@
 module func
 
-go 1.19
+go 1.23
+
+toolchain go1.23.2
 
 require (
-	github.com/fnproject/fdk-go v0.0.33
+	github.com/fnproject/fdk-go v0.0.48
 	github.com/oracle/oci-go-sdk/v65 v65.43.0
 )
 
