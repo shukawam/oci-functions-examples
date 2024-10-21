@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <fdk.version>1.0.177</fdk.version>
+        <fdk.version>1.0.196</fdk.version>
         <oci.sdk.version>3.22.0</oci.sdk.version>
         <jackson.version>2.15.2</jackson.version>
         <maven.formatter.plugin.version>2.23.0</maven.formatter.plugin.version>

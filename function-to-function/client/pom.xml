@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <fdk.version>1.0.182</fdk.version>
+        <fdk.version>1.0.196</fdk.version>
         <oci.sdk.version>3.31.0</oci.sdk.version>
     </properties>
     <groupId>me.shukawam</groupId>
